@@ -9,4 +9,3 @@ cp -rpf * ../
 cd ../
 rm -rf wordpress/
 rm -f latest.tar.gz
-cd ../linux-config-scripts
