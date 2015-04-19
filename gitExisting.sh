@@ -64,7 +64,7 @@ echo 'do you want to do a initial commit '
 echo 'do you want to add a remote origin'
 	read confirmation
 	if  [ $confirmation = "y" ]||[ $confirmation = "yes" ] ; then
-		echo "enter the bitbucket url provided"
+		echo "enter the bitbucket/github url provided"
 		read bitBucketUrl
 		git remote add origin $bitBucketUrl
 		echo 'added'
