@@ -1,27 +1,26 @@
 #!/bin/bash
 # LAMP App server install
 # install php apache mysql and 
-directory="/home/vagrant/public_html"
 echo 'installing LAMP stack Dependencies ...'
 yum -y install wget vim
 
 if [ ! -f /etc/yum.repos.d/epel.repo ]; then
-	wget https://accentdesign.co.uk/rpmdep/epel-release-6-8.noarch.rpm
+	wget http://muhilvannan.com/rpmdep/epel-release-6-8.noarch.rpm
 	rpm -Uvh epel-release-6*.rpm
 	rm -f epel*
 fi
 
 if [ ! -f /etc/yum.repos.d/remi.repo ]; then
-	wget https://accentdesign.co.uk/rpmdep/remi-release-6.rpm
+	wget http://muhilvannan.com/rpmdep/remi-release-6.rpm
 	rpm -Uvh remi-release-6*.rpm
 	rm -f remi*
 fi
-wget https://accentdesign.co.uk/rpmdep/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-rpm -Uvh "https://accentdesign.co.uk/rpmdep/libmcrypt-2.5.8-9.el6.x86_64.rpm"
-rpm -Uvh "https://accentdesign.co.uk/rpmdep/libmcrypt-devel-2.5.8-9.el6.x86_64.rpm"
+wget http://muhilvannan.com/rpmdep/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+rpm -Uvh "http://muhilvannan.com/rpmdep/libmcrypt-2.5.8-9.el6.x86_64.rpm"
+rpm -Uvh "http://muhilvannan.com/rpmdep/libmcrypt-devel-2.5.8-9.el6.x86_64.rpm"
 yum -y install libxml2-devel curl-devel libpng libjpeg libpng-devel libjpeg-devel pcre-devel lua-devel autoconf libtool doxygen mailcap rpm-build openssl-devel sqlite-devel memcached perl-Cache-Memcached gcc make git expat-devel libuuid-devel db4-devel postgresql-devel mysql-devel freetds-devel unixODBC-devel openldap-devel nss-devel libicu-devel
 
-wget https://accentdesign.co.uk/rpmdep/rpms.tar.gz
+wget http://muhilvannan.com/rpmdep/rpms.tar.gz
 tar -zxvf rpms.tar.gz
 cd rpms
 yum -y localinstall * --skip-broken
@@ -40,7 +39,7 @@ yum -y groupinstall "Development Tools"
 yum install -y libxml2-devel libXpm-devel gmp-devel libicu-devel t1lib-devel aspell-devel openssl-devel bzip2-devel libcurl-devel libjpeg-devel libvpx-devel libpng-devel freetype-devel readline-devel libtidy-devel libxslt-devel
 mkdir ~/php
 cd ~/php
-wget https://accentdesign.co.uk/rpmdep/php-5.4.37.tar.bz2
+wget http://muhilvannan.com/rpmdep/php-5.4.37.tar.bz2
 tar jxf php-5.4.37.tar.bz2
 cd php-5.4.37
 ./configure --with-config-file-path=/etc --with-apxs2 --with-config-file-scan-dir=/etc/php.d --with-libdir=lib64 --enable-fpm --enable-cgi --with-layout=PHP --with-pear --with-apxs2 --enable-calendar --enable-bcmath --with-gmp --enable-exif --with-mcrypt --with-mhash --with-zlib --with-bz2 --enable-zip --enable-ftp --enable-mbstring --with-iconv --enable-intl --with-icu-dir=/usr --with-gettext --with-pspell --enable-sockets --with-openssl --with-curl --with-curlwrappers --with-gd --enable-gd-native-ttf --with-jpeg-dir=/usr --with-png-dir=/usr --with-zlib-dir=/usr --with-xpm-dir=/usr --with-vpx-dir=/usr --with-freetype-dir=/usr --with-t1lib=/usr --with-libxml-dir=/usr --with-mysql --with-mysqli --enable-pdo --with-pdo-mysql --enable-soap --with-xmlrpc --with-xsl --with-tidy=/usr --with-readline --enable-pcntl --enable-sysvshm --enable-sysvmsg --enable-shmop
